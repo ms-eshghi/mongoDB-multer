@@ -65,7 +65,8 @@ app.post("/upload", upload.single("image"), async (req, res) => {
 
 app.get("/offers", async (req, res) => {
   try {
-    const offers = await Offer.find();
+    const offers = await Offer.find().sort({ _id: 1 }); // ascending by creation order
+
     const result = await Promise.all(
       offers.map(async (offer) => {
         let image = null;
@@ -88,7 +89,6 @@ app.get("/offers", async (req, res) => {
     res.status(500).send("Failed to fetch offers");
   }
 });
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "views", "index.html"));
 });
