@@ -31,7 +31,7 @@
         div.innerHTML = `
           <div class="card hoverable">
             <div class="card-image">
-              ${offer.imagePath ? `<img src="${offer.imagePath}" class="responsive-img">` : ''}
+              ${offer.imagePath ? `<img src="${offer.imagePath}" class="responsive-img" style="height: 200px; object-fit: cover;">` : ''}
               <span class="card-title">${offer.title}</span>
             </div>
             <div class="card-content">

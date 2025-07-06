@@ -7,6 +7,7 @@ import cors from "cors";
 import { Offer } from "./src/models/Offer";
 import { Image } from "./src/models/Image";
 import mongoose from "mongoose";
+import { fileURLToPath } from "url";
 
 export const app = express();
 
@@ -29,13 +30,14 @@ const storage = multer.diskStorage({
     const originalFilename = path.basename(file.originalname, extension);
     const id = uuidv4();
     const filename = `${originalFilename}_${id}${extension}`;
-     console.log("Saving file with filename:", filename);
+    console.log("Saving file with filename:", filename); // confirm filename here
     cb(null, filename);
   },
 });
 const upload = multer({ storage });
 
 app.post("/upload", upload.single("image"), async (req, res) => {
+    console.log('Uploaded file:', req.file);
   try {
     const { title, description, price } = req.body;
     let imageId;
@@ -43,7 +45,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
     if (req.file) {
       const image = await Image.create({
         filename: req.file.filename,
-        path: `/images/${req.file.filename}`,
+        path: `/images/${req.file.filename}`, 
       });
       imageId = image._id;
     }
