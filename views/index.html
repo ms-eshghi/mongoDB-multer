@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Marketplace</title>
+   
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="center-align">Offers</h1>
+
+      <form id="offerForm" class="card-panel" enctype="multipart/form-data">
+        <div class="input-field">
+          <label for="title">Title</label>
+          <input id="title" type="text" name="title" required />
+        </div>
+
+        <div class="input-field">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            class="materialize-textarea"
+            required=""
+            style="height: 45px"
+          ></textarea>
+        </div>
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload image:</span>
+            <input id="image" type="file" m name="image" accept="image/*" />
+          </div>
+          <div class="file-path-wrapper">
+            <input
+              class="file-path validate"
+              type="text"
+              placeholder="Upload an image"
+            />
+          </div>
+        </div>
+
+        <div class="input-field">
+          <label for="price">Price (€):</label>
+          <input id="price" type="number" name="price" step="0.01" required />
+        </div>
+        <button type="submit" class="btn waver-effect waves-light">
+          Submit
+        </button>
+      </form>
+
+      <div id="offersContainer" class="row"></div>
+    </div>
+
+    <script src="/public/js/main.js" type="text/javascript"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>
